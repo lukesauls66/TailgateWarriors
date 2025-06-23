@@ -55,6 +55,7 @@
 | **Link Display**      | Show all links? Or use a "More" dropdown?                                         |
 | **Navbar Colors**     | Red background (#bf2627), white text                                              |
 | **Logo Style**        | Keep current (white background) or try a transparent version to blend into navbar |
+| **Admin Login**       | Login button for admin and will open a modal for sign in                          |
 
 ## 📚 Sidebar Options
 
