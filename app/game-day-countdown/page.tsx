@@ -1,3 +1,9 @@
+import GameDayCountdownPage from "@/components/gameDayCountdownPage";
+
 export default function Page() {
-  return <h1>Countdown</h1>;
+  return (
+    <div>
+      <GameDayCountdownPage />
+    </div>
+  );
 }
