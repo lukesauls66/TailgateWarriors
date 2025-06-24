@@ -1,3 +1,5 @@
+import TailgateSchedulePage from "@/components/tailgateSchedulePage";
+
 export default function Page() {
-  return <h1>Schedule</h1>;
+  return <TailgateSchedulePage />;
 }
