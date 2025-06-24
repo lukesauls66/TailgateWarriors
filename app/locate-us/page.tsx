@@ -1,3 +1,9 @@
+import LocateUsPage from "@/components/locateUsPage";
+
 export default function Page() {
-  return <h1>Locate Us</h1>;
+  return (
+    <div>
+      <LocateUsPage />
+    </div>
+  );
 }
