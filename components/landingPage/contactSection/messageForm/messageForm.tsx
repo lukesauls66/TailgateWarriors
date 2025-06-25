@@ -38,7 +38,7 @@ export default function MessageForm() {
             name="message"
             placeholder="Message"
             className="w-full border border-tw-grey p-3 focus:outline-none focus:ring-1 focus:ring-tw-grey focus:shadow-lg"
-            rows={4}
+            rows={8}
             required
           ></textarea>
         </div>
