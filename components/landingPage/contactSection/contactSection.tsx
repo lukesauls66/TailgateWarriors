@@ -1,4 +1,5 @@
 import MessageForm from "./messageForm";
+import InfoSection from "./infoSection";
 
 export default function ContactSection() {
   return (
@@ -6,8 +7,9 @@ export default function ContactSection() {
       <h3 className="text-xl md:text-3xl text-center text-semibold text-tw-grey max-w-[50rem]">
         CONTACT ME
       </h3>
-      <div className="flex flex-col lg:flex-row w-full max-w-6xl">
+      <div className="flex flex-col lg:flex-row w-full max-w-6xl gap-8">
         <MessageForm />
+        <InfoSection />
       </div>
     </section>
   );

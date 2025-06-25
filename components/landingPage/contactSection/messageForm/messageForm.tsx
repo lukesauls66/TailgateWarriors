@@ -1,7 +1,7 @@
 export default function MessageForm() {
   return (
     <section className="flex flex-col items-center justify-center bg-background text-foreground w-full max-w-[1024px] gap-4">
-      <h4 className="font-bold text-lg">Send Message</h4>
+      <h4 className="font-bold lg:text-xl">Send Message</h4>
       <form action="" className="flex flex-col gap-6 w-full">
         <div className="w-full">
           <label htmlFor="name" className="sr-only">
