@@ -5,7 +5,7 @@ export default function GallerySection() {
         Reliving the FUN with THE Tailgate Warriors
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl">
-        {[...Array(9)].map((_, index) => (
+        {[...Array(12)].map((_, index) => (
           <div
             key={index}
             className="aspect-square bg-tw-red text-background flex items-center justify-center text-xl font-bold"
