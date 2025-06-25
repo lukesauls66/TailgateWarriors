@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@theme {
+  --color-tw-red: #bf2627;
+  --color-tw-dark-red: #7f1616;
+  --color-tw-grey: #685e59;
+  --color-tw-black: #1b1b1b;
+}
