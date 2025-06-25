@@ -30,4 +30,10 @@ body {
   --color-tw-dark-red: #7f1616;
   --color-tw-grey: #685e59;
   --color-tw-black: #1b1b1b;
+
+  --breakpoint-sm: 425px
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
 }
