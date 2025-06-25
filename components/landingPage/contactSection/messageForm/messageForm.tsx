@@ -1,6 +1,6 @@
 export default function MessageForm() {
   return (
-    <section className="flex flex-col items-center justify-center bg-background text-foreground w-full max-w-[1024px] gap-4">
+    <section className="flex flex-col items-center justify-center bg-background text-foreground w-full lg:w-1/2 max-w-[1024px] gap-4">
       <h4 className="font-bold lg:text-xl">Send Message</h4>
       <form action="" className="flex flex-col gap-6 w-full">
         <div className="w-full">
@@ -42,6 +42,9 @@ export default function MessageForm() {
             required
           ></textarea>
         </div>
+        <p className="text-center text-tw-dark-red text-lg">
+          Attachments Coming Soon
+        </p>
         <button
           type="submit"
           className="w-full bg-tw-red hover:bg-tw-dark-red hover:cursor-pointer text-background font-semibold p-4 border-b-tw-dark-red border-b-4"

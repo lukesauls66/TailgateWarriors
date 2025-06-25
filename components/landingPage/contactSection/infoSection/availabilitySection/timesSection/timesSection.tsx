@@ -13,20 +13,22 @@ export default function TimesSection() {
 
   return (
     <div className="w-full text-center lg:text-left lg:text-lg text-tw-grey">
-      <table className="w-full text-left border-separate border-spacing-y-2">
+      <table className="w-full border-separate border-spacing-y-2">
         <tbody>
           {days.map((day, index) => (
             <tr key={day.label}>
               <th
                 scope="row"
-                className={`pr-4 ${
+                className={`pr-4 text-left ${
                   index === todayIndex ? "font-bold" : "font-medium"
                 }`}
               >
                 {day.label}
               </th>
               <td
-                className={index === todayIndex ? "font-bold" : "font-medium"}
+                className={`text-right ${
+                  index === todayIndex ? "font-bold" : "font-medium"
+                }`}
               >
                 {day.hours}
               </td>
