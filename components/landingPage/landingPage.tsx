@@ -4,7 +4,7 @@ import ContactSection from "./contactSection";
 
 export default function LandingPage() {
   return (
-    <main className="flex flex-col items-center justify-center min-w-screen min-h-screen">
+    <main className="flex flex-col items-center justify-center w-full min-h-screen">
       <HeroSection />
       <GallerySection />
       <ContactSection />
