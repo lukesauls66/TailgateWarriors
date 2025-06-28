@@ -79,12 +79,12 @@
 
 ### 🏠 Home / Landing Page
 
-| Section            | Description / Options                                   |
-| ------------------ | ------------------------------------------------------- |
-| **Intro Picture**  | Large hero image/banner to welcome users                |
-| **About Us**       | Brief section introducing Tailgate Warriors             |
-| **Teaser Gallery** | A few fun/random images to hint at the full photos page |
-| **Contact Us**     | Optional: Have a form for users to reach out            |
+| Section               | Description / Options                                   |
+| --------------------- | ------------------------------------------------------- |
+| **Intro Picture**     | Large hero image/banner to welcome users                |
+| **Mission Statement** | Brief section introducing Tailgate Warriors             |
+| **Teaser Gallery**    | A few fun/random images to hint at the full photos page |
+| **Contact Us**        | Optional: Have a form for users to reach out            |
 
 ### 🖼️ Photos Page
 
@@ -95,7 +95,7 @@
 | **Photo Gallery Style** | Grid layout? Masonry? Click to expand?           |
 | **Sorting/Filters**     | Optional: by date, event, tag, etc.              |
 
-### ⏳ Game Day Countdown
+### ⏳ Game Day Countdown (Post-MVP)
 
 | Section             | Description / Options                    |
 | ------------------- | ---------------------------------------- |
@@ -124,3 +124,19 @@
 | **Questions**          | Keep all from .net site? any additional?      |
 | **Expandable Answers** | Use collapsible sections for a cleaner layout |
 | **Contact Us**         | Optional: Have a form for users to reach out  |
+
+### About Us Page
+
+| Section               | Description / Options                                                      |
+| --------------------- | -------------------------------------------------------------------------- |
+| **Video**             | Video of the group to showcase                                             |
+| **Mission Statement** | Brief section introducing Tailgate Warriors                                |
+| **Core Members**      | Brief description including image, birthday, and job title within the team |
+| **More Info**         | Additional info regarding the team                                         |
+
+### Charity Page
+
+| Section            | Description / Options                 |
+| ------------------ | ------------------------------------- |
+| **Charities**      | List of all charities we work with    |
+| **Link to Donate** | Link for each one for users to donate |
