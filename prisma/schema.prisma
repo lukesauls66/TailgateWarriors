@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  // output   = "../generated/prisma"
 }
 
 datasource db {
@@ -47,6 +47,7 @@ model Team {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   city String
+  logo String
 
   games Game[] @relation("OpponentTeam")
 }
