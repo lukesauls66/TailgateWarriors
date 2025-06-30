@@ -1,11 +1,12 @@
-import prisma from "@/lib/prismadb";
+import prisma from "../lib/prismadb";
 
 async function main() {
   await prisma.user.create({
     data: {
       email: "luke.sauls279@gmail.com",
       name: "Luke Sauls",
-      password: "$2b$10$ViJR46VZRgX84vV.iTK6fO8O4xF35VGYXbH2ytB/BeoOgUFoT3Psu",
+      hashPassword:
+        "$2b$10$ViJR46VZRgX84vV.iTK6fO8O4xF35VGYXbH2ytB/BeoOgUFoT3Psu",
     },
   });
 
