@@ -1,4 +1,4 @@
-import Link from "next/link";
+import NavLinks from "@/components/utils/NavLinks";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -11,53 +11,11 @@ export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
       <div
         className={`fixed top-0 right-0 h-full bg-tw-red text-lg md:text-xl xl:text-3xl font-bold transition-transform duration-300 ${
           isOpen ? "transform translate-x-0" : "transform translate-x-full"
-        } w-[11rem] sm:w-[15rem] md:w-[18rem] xl:w-[24rem] py-4 px-2 md:py-[3rem] md:px-4 z-40`}
+        } w-[11rem] sm:w-[15rem] md:w-[18rem] xl:w-[24rem] py-4 px-2 md:px-4 z-40`}
       >
         <div className="flex flex-col items-center justify-between h-full">
-          {/* <div className="flex flex-col items-center justify-between py-8 h-full"> */}
           <div className="flex flex-col items-center justify-between py-8 gap-14">
-            <Link
-              href="/"
-              onClick={toggleSidebar}
-              className="text-white hover:text-red hover:scale-110 transition-transform duration-200"
-            >
-              Home
-            </Link>
-            <Link
-              href="/photos"
-              onClick={toggleSidebar}
-              className="text-white hover:text-red hover:scale-110 transition-transform duration-200"
-            >
-              Photos
-            </Link>
-            <Link
-              href="/game-day-countdown"
-              onClick={toggleSidebar}
-              className="text-white hover:text-red hover:scale-110 transition-transform duration-200"
-            >
-              Countdown
-            </Link>
-            <Link
-              href="/tailgate-schedule"
-              onClick={toggleSidebar}
-              className="text-white hover:text-red hover:scale-110 transition-transform duration-200"
-            >
-              Schedule
-            </Link>
-            <Link
-              href="/locate-us"
-              onClick={toggleSidebar}
-              className="text-white hover:text-red hover:scale-110 transition-transform duration-200"
-            >
-              Locate Us
-            </Link>
-            <Link
-              href="/FAQ"
-              onClick={toggleSidebar}
-              className="text-white hover:text-red hover:scale-110 transition-transform duration-200"
-            >
-              FAQ
-            </Link>
+            <NavLinks />
           </div>
           <p className="pb-8">TikTok</p>
         </div>
