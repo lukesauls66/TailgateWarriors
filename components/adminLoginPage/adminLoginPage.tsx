@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
 
@@ -9,7 +9,19 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const { login } = useAuth();
+  const { user, login } = useAuth();
+
+  const hasAlerted = useRef(false);
+
+  useEffect(() => {
+    if (user && !hasAlerted.current) {
+      hasAlerted.current = true;
+      alert("You're already signed in.");
+      router.push("/");
+    }
+  }, [user, router]);
+
+  if (user) return null;
 
   const handleLogin = async () => {
     const res = await fetch("/api/login", {
