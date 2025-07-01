@@ -10,12 +10,6 @@ export default function NavLinks() {
         Photos
       </Link>
       <Link
-        href="/game-day-countdown"
-        className="text-white hover:text-red transition-colors duration-200"
-      >
-        Countdown
-      </Link>
-      <Link
         href="/tailgate-schedule"
         className="text-white hover:text-red transition-colors duration-200"
       >
@@ -44,6 +38,12 @@ export default function NavLinks() {
         className="text-white hover:text-red transition-colors duration-200"
       >
         FAQ
+      </Link>
+      <Link
+        href="/admin-login"
+        className="text-white hover:text-red transition-colors duration-200"
+      >
+        Admin
       </Link>
     </>
   );

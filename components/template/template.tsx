@@ -7,10 +7,10 @@ interface TemplateProps {
 
 export default function Template({ children }: TemplateProps) {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main>{children}</main>
+      <main className="flex-grow">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }
