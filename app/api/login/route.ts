@@ -5,6 +5,13 @@ import bcrypt from "bcrypt";
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
 
+  if (!email || !password) {
+    return NextResponse.json(
+      { message: "Missing email or password" },
+      { status: 400 }
+    );
+  }
+
   const user = await prisma.user.findUnique({
     where: { email },
   });
@@ -24,5 +31,8 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  return NextResponse.json({ message: "Login successful" }, { status: 200 });
+  return NextResponse.json(
+    { message: "Login successful", user: { id: user.id, email: user.email } },
+    { status: 200 }
+  );
 }
