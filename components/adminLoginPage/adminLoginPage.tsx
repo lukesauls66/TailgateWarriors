@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/context/AuthContext";
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleLogin = async () => {
     const res = await fetch("/api/login", {
@@ -20,7 +22,7 @@ export default function AdminLoginPage() {
 
     if (res.ok) {
       const data = await res.json();
-      sessionStorage.setItem("user", JSON.stringify(data.user));
+      login(data.user);
       router.push("/");
     } else {
       const errorData = await res.json();
