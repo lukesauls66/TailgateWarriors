@@ -19,6 +19,11 @@ export async function DELETE(
     await prisma.picture.delete({
       where: { id: pictureId },
     });
+
+    return NextResponse.json(
+      { message: "Picture deleted successfully" },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Error deleting picture:", error);
     return NextResponse.json(

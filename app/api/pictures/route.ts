@@ -74,6 +74,11 @@ export async function POST(req: NextRequest) {
         category: category,
       },
     });
+
+    return NextResponse.json({
+      message: "Image uploaded successfully",
+      url: imageUrl,
+    });
   } catch (error) {
     console.error("Error uploading image:", error);
     return NextResponse.json(
