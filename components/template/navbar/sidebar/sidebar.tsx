@@ -1,4 +1,5 @@
 import NavLinks from "@/components/utils/NavLinks";
+import { AiFillTikTok } from "react-icons/ai";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -14,10 +15,10 @@ export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
         } w-[11rem] sm:w-[15rem] md:w-[18rem] xl:w-[24rem] py-4 px-2 md:px-4 z-40`}
       >
         <div className="flex flex-col items-center justify-between h-full">
-          <div className="flex flex-col items-center justify-between py-8 gap-14">
-            <NavLinks />
+          <div className="flex flex-col items-center justify-between py-4 gap-14">
+            <NavLinks toggleSidebar={toggleSidebar} />
           </div>
-          <p className="pb-8">TikTok</p>
+          <AiFillTikTok className="text-[35px] md:text-[40px]" />
         </div>
       </div>
       {isOpen && (

@@ -1,171 +1,52 @@
 import prisma from "../lib/prismadb";
 
 async function main() {
-  await prisma.user.create({
-    data: {
-      email: "luke.sauls279@gmail.com",
-      name: "Luke Sauls",
-      hashPassword:
-        "$2b$10$ViJR46VZRgX84vV.iTK6fO8O4xF35VGYXbH2ytB/BeoOgUFoT3Psu",
-    },
-  });
+  // await prisma.user.create({
+  //   data: {
+  //     email: "luke.sauls279@gmail.com",
+  //     name: "Luke Sauls",
+  //     hashPassword:
+  //       "$2b$10$ViJR46VZRgX84vV.iTK6fO8O4xF35VGYXbH2ytB/BeoOgUFoT3Psu",
+  //   },
+  // });
 
-  await prisma.team.createMany({
+  await prisma.fAQ.createMany({
     data: [
       {
-        name: "Bills",
-        city: "Buffalo",
-        logo: "https://i.ibb.co/VpzM9HP2/bills-logo.webp",
+        question: "Is there a place for us to park near your tailgate?",
+        answer:
+          "We are located in the Green East Carpark.  However, you can walk to our tailgate from anywhere in the stadium lot.",
       },
       {
-        name: "Dolphins",
-        city: "Miami",
-        logo: "https://i.ibb.co/rGsv8YFT/dolphins-logo.png",
+        question: "What time do you start tailgating?",
+        answer:
+          "The stadium parking lot gates open in the morning depending upon the time of year: Sept. & Oct. games, 9:15ish (1:05p/1:25p Kick-Off); Nov.-Jan., 10:15ish (2:05p/2:25p Kick-Off). It will typically take the team 20-30 minutes to set up and start preparing food. The team will begin to tear down an hour and a half prior to kick-off to allow the team to get dressed and fans to get into the game and protect the Nest!",
       },
       {
-        name: "Patriots",
-        city: "New England",
-        logo: "https://i.ibb.co/6cMr63xr/patriots-logo.png",
+        question: "Do you provide food for everyone?",
+        answer:
+          "The Tailgate Warriors tailgate will provide limited food (themed dishes), snacks, desserts, and water. Our amazing Bird Box Bar will tantalize your taste buds with liquid deliciousness, themed for the visiting team, and our signature Red Sea Shot. Music will be provided to bring the sounds of Sunday afternoon. As a general rule, we say, Stop by and grab a bite to eat. Our group is a collective of great fans and is not a money-making group. That said, any donations received on-site or online are donated directly to our favorite local non-profit, HopeKids Inc.",
       },
       {
-        name: "Jets",
-        city: "New York",
-        logo: "https://i.ibb.co/7xdGm9Xj/jets-logo.png",
+        question: "What about beer, wine, and spirits?",
+        answer:
+          "We do provide a shot of the game, a visitor team drink of the game, and have water and gatorade on hand in the warmer months.  Remember to drink responsibly and have a designated driver if needed!",
       },
       {
-        name: "Ravens",
-        city: "Baltimore",
-        logo: "https://i.ibb.co/btpy09T/ravens-logo.jpg",
+        question: "Can we bring the kids?",
+        answer:
+          "Absolutely, we are all family people. However, just a few notes. Our DJ plays family-friendly music.  There are adults drinking around the lot, so if that offends you, stay away.  Also, keep in mind that there are a lot of very hot grills being utilized during the tailgate party.  So keep on eye on the young ones.",
       },
       {
-        name: "Bengals",
-        city: "Cincinnati",
-        logo: "https://i.ibb.co/sJgDnsVs/bengals-logo.png",
+        question:
+          "If I bring my own food, can you cook it for me or provide some grill space so I can cook it?",
+        answer:
+          "We plan out what we are going to cook well before a game and bring only what we need to each game.  If you just walk up and ask us to cook some burgers, do not be surprised if the answer is no, as we plan our breakdown with enough time for our equipment to cool down before loaing into the Van.",
       },
       {
-        name: "Browns",
-        city: "Cleveland",
-        logo: "https://i.ibb.co/KJwGxts/browns-logo.jpg",
-      },
-      {
-        name: "Steelers",
-        city: "Pittsburgh",
-        logo: "https://i.ibb.co/Xgx92Fp/steelers-logo.png",
-      },
-      {
-        name: "Texans",
-        city: "Houston",
-        logo: "https://i.ibb.co/MYJMBv1/texans-logo.jpg",
-      },
-      {
-        name: "Colts",
-        city: "Indianapolis",
-        logo: "https://i.ibb.co/YFzpmDpB/colts-logo.jpg",
-      },
-      {
-        name: "Jaguars",
-        city: "Jacksonville",
-        logo: "https://i.ibb.co/604Bz8k8/jaguars-logo.jpg",
-      },
-      {
-        name: "Titans",
-        city: "Tennessee",
-        logo: "https://i.ibb.co/21Z1FLV5/titans-logo.jpg",
-      },
-      {
-        name: "Broncos",
-        city: "Denver",
-        logo: "https://i.ibb.co/GvQtqn1j/broncos-logo.png",
-      },
-      {
-        name: "Chiefs",
-        city: "Kansas City",
-        logo: "https://i.ibb.co/N2QVk8qz/chiefs-logo.png",
-      },
-      {
-        name: "Raiders",
-        city: "Las Vegas",
-        logo: "https://i.ibb.co/DP9P2GwL/raiders-logo.jpg",
-      },
-      {
-        name: "Chargers",
-        city: "Los Angeles",
-        logo: "https://i.ibb.co/xtw7Xvs6/chargers-logo.jpg",
-      },
-      {
-        name: "Cowboys",
-        city: "Dallas",
-        logo: "https://i.ibb.co/HT4ZbYsv/cowboys-logo.jpg",
-      },
-      {
-        name: "Giants",
-        city: "New York",
-        logo: "https://i.ibb.co/Pz4FcQ25/giants-logo.png",
-      },
-      {
-        name: "Eagles",
-        city: "Philadelphia",
-        logo: "https://i.ibb.co/sTLfW3R/eagles-logo.jpg",
-      },
-      {
-        name: "Commanders",
-        city: "Washington",
-        logo: "https://i.ibb.co/mrTQjx0g/commanders-logo.jpg",
-      },
-      {
-        name: "Bears",
-        city: "Chicago",
-        logo: "https://i.ibb.co/Rpc6ZNGg/bears-logo.jpg",
-      },
-      {
-        name: "Lions",
-        city: "Detroit",
-        logo: "https://i.ibb.co/kgZ8M2Bd/lions-logo.jpg",
-      },
-      {
-        name: "Packers",
-        city: "Green Bay",
-        logo: "https://i.ibb.co/KxLWC829/packers-logo.jpg",
-      },
-      {
-        name: "Vikings",
-        city: "Minnesota",
-        logo: "https://i.ibb.co/fVbd54TC/vikings-logo.png",
-      },
-      {
-        name: "Falcons",
-        city: "Atlanta",
-        logo: "https://i.ibb.co/ds106gXx/falcons-logo.jpg",
-      },
-      {
-        name: "Panthers",
-        city: "Carolina",
-        logo: "https://i.ibb.co/6LVwFnG/panthers-logo.png",
-      },
-      {
-        name: "Saints",
-        city: "New Orleans",
-        logo: "https://i.ibb.co/5hhXcqJd/saints-logo.png",
-      },
-      {
-        name: "Buccaneers",
-        city: "Tampa Bay",
-        logo: "https://i.ibb.co/hRmhDBwx/buccaneers-logo.jpg",
-      },
-      {
-        name: "Rams",
-        city: "Los Angeles",
-        logo: "https://i.ibb.co/dwfgxZvS/rams-logo.png",
-      },
-      {
-        name: "49ers",
-        city: "San Francisco",
-        logo: "https://i.ibb.co/Pzmx6t1f/49ers-logo.png",
-      },
-      {
-        name: "Seahawks",
-        city: "Seattle",
-        logo: "https://i.ibb.co/tMb3tcG0/seahawks-logo.png",
+        question: "What should I bring?",
+        answer:
+          "The only things to bring to attend our tailgates are passion for your team, respect for all fans, and the desire to meet great people from around the world and league. The Tailgate Warriors are in an annual national tailgate charity challenge, supporting the children and families of Hope Kids, Inc. If you'd like to assist us in reaching our goal this season, you can go online and donate directly on our Hope Kids Tailgate Warriors page. A QR code for donations can be found on the Hope Kids, Inc. page of our site.",
       },
     ],
   });
