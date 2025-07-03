@@ -3,7 +3,14 @@ import { NextResponse, NextRequest } from "next/server";
 
 export async function GET() {
   try {
-    const games = await prisma.game.findMany();
+    const games = await prisma.game.findMany({
+      include: {
+        opponent: true,
+      },
+      orderBy: {
+        date: "asc",
+      },
+    });
     return NextResponse.json(games, { status: 200 });
   } catch (error) {
     console.error("Error fetching games:", error);
