@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { AiFillTikTok } from "react-icons/ai";
 
 export default function Footer() {
   return (
@@ -8,7 +7,7 @@ export default function Footer() {
         Copyright © 2025 Tailgate Warriors - All Rights Reserved.
       </p>
       <Link href="/privacy-policy">PRIVACY POLICY</Link>
-      <AiFillTikTok className="text-[40px] 2xl:text-[50px]" />
+      <p>TikTok</p>
     </footer>
   );
 }
