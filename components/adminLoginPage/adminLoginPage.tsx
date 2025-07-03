@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
+import SubmitButton from "../utils/buttons/submitButton";
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
@@ -62,12 +63,7 @@ export default function AdminLoginPage() {
           required
           className="w-full border border-tw-grey p-3 focus:outline-none focus:ring-1 focus:ring-tw-grey focus:shadow-lg"
         />
-        <button
-          onClick={handleLogin}
-          className="w-full bg-tw-red hover:bg-tw-dark-red hover:cursor-pointer text-background font-semibold p-4 border-b-tw-dark-red border-b-4"
-        >
-          Login
-        </button>
+        <SubmitButton type="submit" name="Login" />
         {error && (
           <p className="text-tw-dark-red sm:text-lg lg:text-xl">{error}</p>
         )}

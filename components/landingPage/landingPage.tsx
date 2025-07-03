@@ -1,6 +1,6 @@
 import HeroSection from "./heroSection";
 import GallerySection from "./gallerySection";
-import ContactSection from "./contactSection";
+import ContactSection from "../utils/contactSection";
 
 export default function LandingPage() {
   return (
