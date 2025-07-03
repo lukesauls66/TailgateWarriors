@@ -21,7 +21,7 @@ export default function CollapsibleFAQ({
         <span className="flex-grow text-left">{faq.question}</span>
         <div className="w-5 h-5 flex items-center justify-center shrink-0">
           <FaChevronDown
-            className={`size-4 transition-transform duration-300 ${
+            className={`size-4 lg:size-7 transition-transform duration-300 ${
               isOpen ? "rotate-180" : ""
             }`}
           />
