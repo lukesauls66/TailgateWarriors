@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prismadb";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(
   req: NextRequest,
@@ -22,7 +22,7 @@ export async function DELETE(
 
     return NextResponse.json(
       { message: "Picture deleted successfully" },
-      { status: 200 }
+      { status: 204 }
     );
   } catch (error) {
     console.error("Error deleting picture:", error);
