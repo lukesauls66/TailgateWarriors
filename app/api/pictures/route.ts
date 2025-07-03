@@ -5,7 +5,7 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 export async function GET() {
   try {
     const pictures = await prisma.picture.findMany();
-    return NextResponse.json(pictures);
+    return NextResponse.json(pictures, { status: 200 });
   } catch (error) {
     console.error("Error fetching pictures:", error);
     return NextResponse.json(
@@ -75,10 +75,13 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json({
-      message: "Image uploaded successfully",
-      url: imageUrl,
-    });
+    return NextResponse.json(
+      {
+        message: "Image uploaded successfully",
+        url: imageUrl,
+      },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("Error uploading image:", error);
     return NextResponse.json(
