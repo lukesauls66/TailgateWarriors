@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./calendar.css";
@@ -8,24 +8,29 @@ import { Game } from "@/types";
 
 interface CalendarSectionProps {
   games: Game[];
+  selectedDate: Date;
+  setSelectedDate: Dispatch<SetStateAction<Date>>;
 }
 
 type CalendarValue = Date | [Date | null, Date | null] | null;
 
-export default function CalendarSection({ games }: CalendarSectionProps) {
-  const [date, setDate] = useState<CalendarValue>(new Date());
-  console.log("Games:", games);
-
+export default function CalendarSection({
+  games,
+  selectedDate,
+  setSelectedDate,
+}: CalendarSectionProps) {
   const gameMap = new Map(
     games.map((game) => [new Date(game.date).toISOString().split("T")[0], game])
   );
 
   return (
-    <div className="flex justify-center items-center p-4 w-full">
+    <div className="flex justify-center items-center p-4 lg:py-6 w-full">
       <div className="bg-white rounded-lg shadow-lg w-full max-w-[768px]">
         <Calendar
-          onChange={(value) => setDate(value)}
-          value={date}
+          onChange={(value) => {
+            if (value instanceof Date) setSelectedDate(value);
+          }}
+          value={selectedDate}
           calendarType="gregory"
           tileContent={({ date: tileDate }) => {
             const iso = tileDate.toISOString().split("T")[0];
