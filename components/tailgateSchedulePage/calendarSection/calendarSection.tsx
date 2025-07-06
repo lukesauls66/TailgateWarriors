@@ -12,8 +12,6 @@ interface CalendarSectionProps {
   setSelectedDate: Dispatch<SetStateAction<Date>>;
 }
 
-type CalendarValue = Date | [Date | null, Date | null] | null;
-
 export default function CalendarSection({
   games,
   selectedDate,
@@ -39,9 +37,9 @@ export default function CalendarSection({
             if (!game)
               return (
                 <div className="flex flex-col items-center justify-end h-[2.75rem] md:h-[3.8rem]">
-                  <span className="text-[10px] md:text-[12px] text-gray-500">
+                  {/* <span className="text-[10px] md:text-[12px] text-gray-500">
                     No Game
-                  </span>
+                  </span> */}
                 </div>
               );
 

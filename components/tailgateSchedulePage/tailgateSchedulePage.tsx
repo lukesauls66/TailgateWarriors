@@ -33,7 +33,9 @@ export default function TailgateSchedulePage({
       {selectedGame ? (
         <GameInfo selectedGame={selectedGame} />
       ) : (
-        <p className="text-gray-500">No game on this day.</p>
+        <p className="text-gray-500 text-lg md:text-xl lg:text-2xl my-4 lg:my-8">
+          No game on this day.
+        </p>
       )}
     </main>
   );
