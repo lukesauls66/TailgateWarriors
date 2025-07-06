@@ -1,14 +1,32 @@
 import prisma from "../lib/prismadb";
 
 async function main() {
-  await prisma.user.create({
-    data: {
-      email: "luke.sauls279@gmail.com",
-      name: "Luke Sauls",
-      hashPassword:
-        "$2b$10$r9oABtDEVtx1FED5nIMHY.kwCG.YlZlJ7uW.VgRG5fq2qjWJC8Za2",
-      role: "Developer",
-    },
+  // await prisma.user.create({
+  //   data: {
+  //     email: "luke.sauls279@gmail.com",
+  //     name: "Luke Sauls",
+  //     role: "Developer",
+  //   },
+  // });
+
+  await prisma.game.createMany({
+    data: [
+      {
+        date: new Date("2025-07-20T20:00:00Z"),
+        location: "Home",
+        opponentId: "6862ec5f5d61f8ec387dc289",
+      },
+      {
+        date: new Date("2025-07-25T20:00:00Z"),
+        location: "Away",
+        opponentId: "6862ec5f5d61f8ec387dc28d",
+      },
+      {
+        date: new Date("2025-07-30T20:00:00Z"),
+        location: "Home",
+        opponentId: "6862ec5f5d61f8ec387dc295",
+      },
+    ],
   });
 
   // await prisma.fAQ.createMany({
