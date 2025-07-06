@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
 import ContactSection from "../utils/contactSection";
 import CollapsibleFAQ from "./collapsibleFAQ";
 import { FAQ } from "@/types";
