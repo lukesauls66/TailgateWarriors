@@ -21,8 +21,8 @@ export default function CalendarSection({ games }: CalendarSectionProps) {
   );
 
   return (
-    <div className="flex justify-center items-center p-2 w-full">
-      <div className="bg-white rounded-lg shadow-lg p-4 w-full max-w-[768px]">
+    <div className="flex justify-center items-center p-4 w-full">
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-[768px]">
         <Calendar
           onChange={(value) => setDate(value)}
           value={date}
@@ -33,8 +33,10 @@ export default function CalendarSection({ games }: CalendarSectionProps) {
 
             if (!game)
               return (
-                <div className="flex flex-col items-center justify-end h-[3.7rem]">
-                  <span className="text-[10px] text-gray-500">No Game</span>
+                <div className="flex flex-col items-center justify-end h-[2.75rem] md:h-[3.8rem]">
+                  <span className="text-[10px] md:text-[12px] text-gray-500">
+                    No Game
+                  </span>
                 </div>
               );
 
@@ -45,7 +47,7 @@ export default function CalendarSection({ games }: CalendarSectionProps) {
                   alt={game.opponent.name}
                   className="w-10 h-10 object-contain"
                 />
-                <span className="hidden sm:block text-[10px] text-center">
+                <span className="hidden md:block text-[10px] md:text-[12px] text-center text-black">
                   {game.opponent.name}
                 </span>
               </div>
