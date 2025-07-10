@@ -13,7 +13,7 @@ import "./gameForm.css";
 
 interface GameFormProps {
   teams: Team[];
-  game?: Game;
+  game?: Game | null;
   onSubmit: (game: {
     date: Date;
     location: "Home" | "Away";

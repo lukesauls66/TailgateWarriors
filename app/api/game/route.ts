@@ -34,18 +34,18 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    await prisma.game.create({
+    const newGame = await prisma.game.create({
       data: {
         date,
         location,
         opponentId,
       },
+      include: {
+        opponent: true,
+      },
     });
 
-    return NextResponse.json(
-      { message: "Game created successfully" },
-      { status: 201 }
-    );
+    return NextResponse.json({ newGame }, { status: 201 });
   } catch (error) {
     console.error("Error creating game:", error);
     return NextResponse.json(

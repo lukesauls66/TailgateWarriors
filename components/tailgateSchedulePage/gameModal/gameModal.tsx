@@ -8,10 +8,16 @@ import { Game, Team } from "@/types";
 interface GameModalProps {
   isOpen: boolean;
   onClose: () => void;
-  game?: Game;
+  game?: Game | null;
+  onSave: (savedGame: Game) => void;
 }
 
-export default function GameModal({ isOpen, onClose, game }: GameModalProps) {
+export default function GameModal({
+  isOpen,
+  onClose,
+  game,
+  onSave,
+}: GameModalProps) {
   const [teams, setTeams] = useState<Team[]>([]);
 
   useEffect(() => {
@@ -33,20 +39,24 @@ export default function GameModal({ isOpen, onClose, game }: GameModalProps) {
     opponentId: string;
   }) => {
     try {
+      let response;
       if (game) {
-        console.log("Updating game:", game.id, gameData);
-        await fetch(`/api/game/${game.id}`, {
+        response = await fetch(`/api/game/${game.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(gameData),
         });
       } else {
-        await fetch("/api/game", {
+        response = await fetch("/api/game", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(gameData),
         });
       }
+
+      const resJson = await response.json();
+      const savedGame = resJson.newGame || resJson;
+      onSave(savedGame);
       onClose();
     } catch (error) {
       console.error("Failed to submit game:", error);
