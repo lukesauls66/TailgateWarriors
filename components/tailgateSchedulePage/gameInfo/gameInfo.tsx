@@ -7,7 +7,7 @@ interface GameInfoProps {
 
 export default function GameInfo({ selectedGame }: GameInfoProps) {
   return (
-    <section className="flex flex-col items-center gap-4 mt-6">
+    <section className="flex flex-col items-center gap-4">
       <h2 className="flex items-center text-lg md:text-xl lg:text-2xl font-semibold gap-4">
         <img
           src="/cardinals-logo.png"

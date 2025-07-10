@@ -22,7 +22,7 @@ export default function CalendarSection({
   );
 
   return (
-    <div className="flex justify-center items-center p-4 lg:py-6 w-full">
+    <div className="flex justify-center items-center px-4 w-full">
       <div className="bg-white rounded-lg shadow-lg w-full max-w-[768px]">
         <Calendar
           onChange={(value) => {
