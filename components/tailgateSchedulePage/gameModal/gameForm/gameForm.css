@@ -1,17 +1,15 @@
 @media (min-width: 425px) {
   .react-datepicker {
-    width: 21.2rem; /* or 350px, or whatever fits your layout */
-    font-size: 1rem; /* optional: increase text size */
+    width: 21.2rem;
+    font-size: 1rem;
   }
 
-  /* Resize the day cells */
   .react-datepicker__day {
     width: 2.5rem;
     line-height: 2.5rem;
     margin: 0.2rem;
   }
 
-  /* Resize the header */
   .react-datepicker__header {
     padding-top: 1rem;
     padding-bottom: 1rem;

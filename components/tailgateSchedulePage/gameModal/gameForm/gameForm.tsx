@@ -5,7 +5,10 @@ import { Game, Team } from "@/types";
 import Button from "../../../utils/button";
 import { Listbox } from "@headlessui/react";
 import ReactDatePicker from "react-datepicker";
+import TimePicker from "react-time-picker";
 import "react-datepicker/dist/react-datepicker.css";
+import "react-time-picker/dist/TimePicker.css";
+import "react-clock/dist/Clock.css";
 import "./gameForm.css";
 
 interface GameFormProps {
@@ -62,7 +65,7 @@ export default function GameForm({ teams, game, onSubmit }: GameFormProps) {
             if (date) setDate(date);
           }}
           dateFormat="MM-dd-yyyy"
-          className="w-full border p-2 rounded"
+          className="w-1/2 border p-2 rounded"
           required
           placeholderText="Select Date"
         />
@@ -71,13 +74,13 @@ export default function GameForm({ teams, game, onSubmit }: GameFormProps) {
         <label htmlFor="time" className="font-semibold">
           Time
         </label>
-        <input
-          type="time"
+        <TimePicker
           id="time"
+          onChange={(val) => setTime(val || "")}
           value={time}
-          onChange={(e) => setTime(e.target.value)}
-          className="border p-2 rounded"
-          required
+          disableClock={true}
+          clearIcon={null}
+          className="border border-black rounded w-1/2 p-2 text-tw-red"
         />
       </div>
       <div className="flex flex-col gap-1">

@@ -34,6 +34,7 @@ export default function GameModal({ isOpen, onClose, game }: GameModalProps) {
   }) => {
     try {
       if (game) {
+        console.log("Updating game:", game.id, gameData);
         await fetch(`/api/game/${game.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

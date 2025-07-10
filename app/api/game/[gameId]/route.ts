@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: Promise<{ GameId: string }> }
+  { params }: { params: Promise<{ gameId: string }> }
 ) {
-  const { GameId } = await params;
+  const { gameId } = await params;
 
   try {
     const { date, location, opponentId } = await req.json();
@@ -18,7 +18,7 @@ export async function PUT(
     }
 
     const updatedGame = await prisma.game.update({
-      where: { id: GameId },
+      where: { id: gameId },
       data: { date, location, opponentId },
     });
 
