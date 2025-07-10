@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: Promise<{ GameId: string }> }
+  { params }: { params: Promise<{ gameId: string }> }
 ) {
-  const { GameId } = await params;
+  const { gameId } = await params;
 
   try {
     const { date, location, opponentId } = await req.json();
@@ -18,8 +18,11 @@ export async function PUT(
     }
 
     const updatedGame = await prisma.game.update({
-      where: { id: GameId },
+      where: { id: gameId },
       data: { date, location, opponentId },
+      include: {
+        opponent: true,
+      },
     });
 
     return NextResponse.json(updatedGame, { status: 200 });
@@ -34,13 +37,13 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: Promise<{ GameId: string }> }
+  { params }: { params: Promise<{ gameId: string }> }
 ) {
-  const { GameId } = await params;
+  const { gameId } = await params;
 
   try {
     const game = await prisma.game.findUnique({
-      where: { id: GameId },
+      where: { id: gameId },
     });
 
     if (!game) {
@@ -48,12 +51,12 @@ export async function DELETE(
     }
 
     await prisma.game.delete({
-      where: { id: GameId },
+      where: { id: gameId },
     });
 
     return NextResponse.json(
       { message: "Game deleted successfully" },
-      { status: 204 }
+      { status: 200 }
     );
   } catch (error) {
     console.error("Error deleting game:", error);

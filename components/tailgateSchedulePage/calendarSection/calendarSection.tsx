@@ -10,23 +10,29 @@ interface CalendarSectionProps {
   games: Game[];
   selectedDate: Date;
   setSelectedDate: Dispatch<SetStateAction<Date>>;
+  setSelectedGameId: Dispatch<SetStateAction<string | null>>;
 }
 
 export default function CalendarSection({
   games,
   selectedDate,
   setSelectedDate,
+  setSelectedGameId,
 }: CalendarSectionProps) {
   const gameMap = new Map(
     games.map((game) => [new Date(game.date).toISOString().split("T")[0], game])
   );
 
   return (
-    <div className="flex justify-center items-center p-4 lg:py-6 w-full">
+    <div className="flex justify-center items-center px-4 w-full">
       <div className="bg-white rounded-lg shadow-lg w-full max-w-[768px]">
         <Calendar
-          onChange={(value) => {
-            if (value instanceof Date) setSelectedDate(value);
+          onClickDay={(date) => {
+            const iso = date.toISOString().split("T")[0];
+            const game = gameMap.get(iso);
+
+            setSelectedDate(date);
+            setSelectedGameId(game ? game.id : null);
           }}
           value={selectedDate}
           calendarType="gregory"
@@ -45,14 +51,26 @@ export default function CalendarSection({
 
             return (
               <div className="flex flex-col items-center mt-1">
-                <img
+                {game?.opponent?.logo && (
+                  <img
+                    src={game.opponent.logo}
+                    alt={game.opponent.name}
+                    className="w-10 h-10 object-contain"
+                  />
+                )}
+                {game?.opponent?.name && (
+                  <span className="hidden md:block text-[10px] md:text-[12px] text-center text-black">
+                    {game.opponent.name}
+                  </span>
+                )}
+                {/* <img
                   src={game.opponent.logo}
                   alt={game.opponent.name}
                   className="w-10 h-10 object-contain"
                 />
                 <span className="hidden md:block text-[10px] md:text-[12px] text-center text-black">
                   {game.opponent.name}
-                </span>
+                </span> */}
               </div>
             );
           }}
