@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { Game, Team } from "@/types";
 import Button from "../../../utils/button";
 import { Listbox } from "@headlessui/react";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./gameForm.css";
 
 interface GameFormProps {
   teams: Team[];
@@ -16,7 +19,7 @@ interface GameFormProps {
 }
 
 export default function GameForm({ teams, game, onSubmit }: GameFormProps) {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState<Date | null>(null);
   const [time, setTime] = useState("");
   const [location, setLocation] = useState<"Home" | "Away">("Home");
   const [opponentId, setOpponentId] = useState("");
@@ -24,7 +27,7 @@ export default function GameForm({ teams, game, onSubmit }: GameFormProps) {
   useEffect(() => {
     if (game) {
       const gameDate = new Date(game.date);
-      setDate(gameDate.toISOString().split("T")[0]);
+      setDate(new Date(game.date));
       setTime(gameDate.toTimeString().slice(0, 5));
       setLocation(game.location);
       setOpponentId(game.opponentId);
@@ -36,7 +39,9 @@ export default function GameForm({ teams, game, onSubmit }: GameFormProps) {
 
     if (!date || !time || !opponentId) return;
 
-    const datetime = new Date(`${date}T${time}`);
+    const [hours, minutes] = time.split(":").map(Number);
+    const datetime = new Date(date);
+    datetime.setHours(hours, minutes, 0, 0);
 
     onSubmit({
       date: datetime,
@@ -51,13 +56,15 @@ export default function GameForm({ teams, game, onSubmit }: GameFormProps) {
         <label htmlFor="date" className="font-semibold">
           Date
         </label>
-        <input
-          type="date"
-          id="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="border p-2 rounded"
+        <ReactDatePicker
+          selected={date}
+          onChange={(date) => {
+            if (date) setDate(date);
+          }}
+          dateFormat="MM-dd-yyyy"
+          className="w-full border p-2 rounded"
           required
+          placeholderText="Select Date"
         />
       </div>
       <div className="flex flex-col gap-1">
