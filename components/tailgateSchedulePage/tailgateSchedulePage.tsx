@@ -5,7 +5,8 @@ import CalendarSection from "./calendarSection";
 import GameInfo from "./gameInfo";
 import { Game } from "@/types";
 import { useAuth } from "@/app/context/AuthContext";
-import Button from "../utils/Button";
+import Button from "../utils/button";
+import GameModal from "./gameModal";
 
 interface TailgateSchedulePageProps {
   games: Game[];
@@ -48,34 +49,6 @@ export default function TailgateSchedulePage({
           )}
         </div>
       )}
-      {/* {user && isCreateOpen ? (
-        <p>Create a new game</p>
-      ) : user && isUpdateOpen ? (
-        <p>Update the game</p>
-      ) : user && selectedGame ? (
-        <div className="flex gap-2 md:gap-4 text-sm md:text-base lg:text-lg">
-          <Button
-            onClick={() => setIsCreateOpen(true)}
-            name="Create"
-            width="w-[6rem] md:w-[8rem]"
-          />
-          <Button
-            onClick={() => setIsUpdateOpen(true)}
-            name="Update"
-            width="w-[6rem] md:w-[8rem]"
-          />
-        </div>
-      ) : (
-        user && (
-          <div className="flex gap-2 md:gap-4 text-sm md:text-base lg:text-lg">
-            <Button
-              onClick={() => setIsCreateOpen(true)}
-              name="Create"
-              width="w-[6rem] md:w-[8rem]"
-            />
-          </div>
-        )
-      )} */}
       <CalendarSection
         games={games}
         selectedDate={selectedDate}
@@ -88,6 +61,12 @@ export default function TailgateSchedulePage({
           No game on this day.
         </p>
       )}
+      <GameModal isOpen={isCreateOpen} onClose={() => setIsCreateOpen(false)} />
+      <GameModal
+        isOpen={isUpdateOpen}
+        onClose={() => setIsUpdateOpen(false)}
+        game={selectedGame}
+      />
     </main>
   );
 }
