@@ -2,7 +2,8 @@
 
 import Countdown from "./countdown";
 import { Game } from "@/types";
-import Button from "@/components/utils/button";
+import Button from "@/components/utils/Button";
+import { useAuth } from "@/app/context/AuthContext";
 
 interface GameInfoProps {
   game: Game;
@@ -10,6 +11,8 @@ interface GameInfoProps {
 }
 
 export default function GameInfo({ game, onDelete }: GameInfoProps) {
+  const { user } = useAuth();
+
   const handleDelete = async () => {
     try {
       const res = await fetch(`/api/game/${game.id}`, {
@@ -53,7 +56,7 @@ export default function GameInfo({ game, onDelete }: GameInfoProps) {
         })}
       </p>
       <Countdown date={game.date} />
-      <Button name="Delete Game" onClick={handleDelete} />
+      {user && <Button name="Delete Game" onClick={handleDelete} />}
     </section>
   );
 }

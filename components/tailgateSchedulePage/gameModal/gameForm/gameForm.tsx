@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Game, Team } from "@/types";
-import Button from "../../../utils/button";
+import Button from "../../../utils/Button";
 import { Listbox } from "@headlessui/react";
 import ReactDatePicker from "react-datepicker";
 import TimePicker from "react-time-picker";

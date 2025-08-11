@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
-import SubmitButton from "../utils/button";
+import SubmitButton from "../utils/Button";
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("");

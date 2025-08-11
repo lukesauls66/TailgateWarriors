@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Modal from "@/components/utils/modal";
+import Modal from "@/components/utils/Modal";
 import GameForm from "./gameForm/gameForm";
 import { Game, Team } from "@/types";
 

@@ -5,7 +5,7 @@ import CalendarSection from "./calendarSection";
 import GameInfo from "./gameInfo";
 import { Game } from "@/types";
 import { useAuth } from "@/app/context/AuthContext";
-import Button from "../utils/button";
+import Button from "../utils/Button";
 import GameModal from "./gameModal";
 
 interface TailgateSchedulePageProps {

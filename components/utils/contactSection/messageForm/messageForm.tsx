@@ -1,4 +1,4 @@
-import SubmitButton from "@/components/utils/button";
+import SubmitButton from "@/components/utils/Button";
 
 export default function MessageForm() {
   return (
