@@ -9,25 +9,25 @@ async function main() {
   //   },
   // });
 
-  await prisma.game.createMany({
-    data: [
-      {
-        date: new Date("2025-07-20T20:00:00Z"),
-        location: "Home",
-        opponentId: "6862ec5f5d61f8ec387dc289",
-      },
-      {
-        date: new Date("2025-07-25T20:00:00Z"),
-        location: "Away",
-        opponentId: "6862ec5f5d61f8ec387dc28d",
-      },
-      {
-        date: new Date("2025-07-30T20:00:00Z"),
-        location: "Home",
-        opponentId: "6862ec5f5d61f8ec387dc295",
-      },
-    ],
-  });
+  // await prisma.game.createMany({
+  //   data: [
+  //     {
+  //       date: new Date("2025-07-20T20:00:00Z"),
+  //       location: "Home",
+  //       opponentId: "6862ec5f5d61f8ec387dc289",
+  //     },
+  //     {
+  //       date: new Date("2025-07-25T20:00:00Z"),
+  //       location: "Away",
+  //       opponentId: "6862ec5f5d61f8ec387dc28d",
+  //     },
+  //     {
+  //       date: new Date("2025-07-30T20:00:00Z"),
+  //       location: "Home",
+  //       opponentId: "6862ec5f5d61f8ec387dc295",
+  //     },
+  //   ],
+  // });
 
   // await prisma.fAQ.createMany({
   //   data: [
@@ -69,6 +69,16 @@ async function main() {
   //     },
   //   ],
   // });
+
+  await prisma.user.updateMany({
+    where: {},
+    data: {
+      duties: null,
+      yearsOnCrew: null,
+      favoriteMemory: null,
+      birthday: null,
+    },
+  });
 
   return "Seed completed successfully!";
 }
