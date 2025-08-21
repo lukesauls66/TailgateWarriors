@@ -19,15 +19,18 @@ enum Role {
 }
 
 model User {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  email        String?  @unique
-  name         String
-  hashPassword String?
-  bio          String?
-  imgUrl       String?
-  role         Role     @default(Admin)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  email          String  @unique
+  name           String
+  hashPassword   String?
+  duties         String?
+  yearsOnCrew    String?
+  favoriteMemory String?
+  birthday       String?
+  imgUrl         String?
+  role           Role     @default(Admin)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   pictures Picture[]
 }
