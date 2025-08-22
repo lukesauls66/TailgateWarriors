@@ -4,6 +4,9 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import HopeKidsTab from "./tabs/hopeKidsTab";
+import McDonaldHouseTab from "./tabs/mcDonaldHouseTab";
+import ArisFoundation from "./tabs/arisFoundation";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -22,7 +25,11 @@ function CustomTabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && (
+        <Box sx={{ p: 3 }} className="flex justify-center">
+          {children}
+        </Box>
+      )}
     </div>
   );
 }
@@ -66,13 +73,13 @@ export default function CharitiesPage() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        Item One
+        <HopeKidsTab />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <McDonaldHouseTab />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <ArisFoundation />
       </CustomTabPanel>
     </main>
   );
