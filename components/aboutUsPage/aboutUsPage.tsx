@@ -51,9 +51,13 @@ export default function AboutUsPage({ users }: AboutUsPageProps) {
         <h2 className="font-bold text-lg md:text-xl xl:text-2xl">
           Meet the team!
         </h2>
-        {users.map((user) => (
-          <UserCard key={user.id} user={user} />
-        ))}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+            {users.map((user) => (
+              <UserCard key={user.id} user={user} />
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   );
