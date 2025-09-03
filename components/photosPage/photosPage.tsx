@@ -97,12 +97,33 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {photoState.map((photo) => (
-            <div key={photo.id} className="relative">
+            <div key={photo.id} className="relative group">
               <img
                 src={photo.url}
                 alt={photo.category}
                 className="w-full h-[20rem] md:[30rem] rounded-lg"
               />
+              {user && (
+                <button
+                  onClick={async () => {
+                    try {
+                      const res = await fetch(`/api/pictures/${photo.id}`, {
+                        method: "DELETE",
+                      });
+                      if (!res.ok) throw new Error("Failed to delete");
+                      setPhotoState((prev) =>
+                        prev.filter((p) => p.id !== photo.id)
+                      );
+                    } catch (err) {
+                      console.error(err);
+                      alert("Failed to delete photo");
+                    }
+                  }}
+                  className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition cursor-pointer"
+                >
+                  ✕
+                </button>
+              )}
             </div>
           ))}
         </div>

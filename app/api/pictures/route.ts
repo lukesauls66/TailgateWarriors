@@ -5,7 +5,11 @@ import { Season, Category } from "@prisma/client";
 
 export async function GET() {
   try {
-    const pictures = await prisma.picture.findMany();
+    const pictures = await prisma.picture.findMany({
+      orderBy: {
+        createdAt: "asc",
+      },
+    });
     return NextResponse.json(pictures, { status: 200 });
   } catch (error) {
     console.error("Error fetching pictures:", error);
