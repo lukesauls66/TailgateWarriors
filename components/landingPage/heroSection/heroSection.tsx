@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <section className="flex flex-col items-center justify-center bg-tw-red text-background w-full">
+    <section className="flex flex-col items-center justify-center bg-tw-red text-white w-full">
       <img
         src="/tw-hero-image.PNG"
         alt="Hero Image"
