@@ -76,7 +76,7 @@ export default function TailgateSchedulePage({
           }}
         />
       ) : (
-        <p className="text-gray-500 text-lg md:text-xl lg:text-2xl my-4 lg:my-8">
+        <p className="text-foreground text-lg md:text-xl lg:text-2xl my-4 lg:my-8">
           No game on this day.
         </p>
       )}

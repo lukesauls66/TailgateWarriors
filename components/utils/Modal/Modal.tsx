@@ -15,7 +15,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg"
+        className="w-full max-w-md bg-white dark:text-black p-6 rounded-lg shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         {children}

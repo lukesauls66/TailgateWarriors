@@ -40,7 +40,7 @@ export default function Countdown({ date }: GameCountdownProps) {
           {`${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
         </p>
       ) : (
-        <p className="text-black text-3xl md:text-4xl lg:text-5xl font-semibold my-4 lg:my-8">
+        <p className="text-foreground text-3xl md:text-4xl lg:text-5xl font-semibold my-4 lg:my-8">
           Game is live or completed!
         </p>
       )}
