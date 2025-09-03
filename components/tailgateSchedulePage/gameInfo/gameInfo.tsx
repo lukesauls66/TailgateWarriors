@@ -30,7 +30,7 @@ export default function GameInfo({ game, onDelete }: GameInfoProps) {
   };
 
   return (
-    <section className="flex flex-col items-center gap-4">
+    <section className="flex flex-col items-center gap-4 text-foreground">
       <h2 className="flex items-center text-lg md:text-xl lg:text-2xl font-semibold gap-4">
         <img
           src="/cardinals-logo.png"
@@ -46,7 +46,7 @@ export default function GameInfo({ game, onDelete }: GameInfoProps) {
           />
         )}
       </h2>
-      <p className="text-gray-600 md:text-lg lg:text-xl">
+      <p className="md:text-lg lg:text-xl">
         {new Date(game.date).toLocaleString("en-US", {
           weekday: "long",
           month: "long",
