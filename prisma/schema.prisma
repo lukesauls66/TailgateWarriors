@@ -38,6 +38,16 @@ model User {
 enum Category {
   Home
   Away
+  Season2016
+  Season2017
+  Season2018
+  Season2019
+  Season2020
+  Season2021
+  Season2022
+  Season2023
+  Season2024
+  Season2025
 }
 
 model Picture {
