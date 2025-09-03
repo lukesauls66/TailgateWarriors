@@ -22,7 +22,7 @@ export async function DELETE(
 
     return NextResponse.json(
       { message: "Picture deleted successfully" },
-      { status: 204 }
+      { status: 200 }
     );
   } catch (error) {
     console.error("Error deleting picture:", error);
