@@ -38,6 +38,10 @@ model User {
 enum Category {
   Home
   Away
+}
+
+enum Season {
+  Season2015
   Season2016
   Season2017
   Season2018
@@ -55,6 +59,7 @@ model Picture {
   url       String
   userId    String   @db.ObjectId
   category  Category
+  season    Season
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

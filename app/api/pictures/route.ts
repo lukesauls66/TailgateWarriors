@@ -1,6 +1,7 @@
 import prisma from "@/lib/prismadb";
 import { NextResponse, NextRequest } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { Season, Category } from "@prisma/client";
 
 export async function GET() {
   try {
@@ -39,7 +40,8 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData();
 
     const image = (formData.get("image") as File) || null;
-    const category = formData.get("category") as string;
+    const category = formData.get("category") as Category;
+    const season = formData.get("season") as Season;
     const userId = formData.get("userId") as string;
 
     if (!image || !category || !userId) {
@@ -67,21 +69,16 @@ export async function POST(req: NextRequest) {
 
     const imageUrl = `https://${bucketName}.s3.${bucketRegion}.amazonaws.com/${fileKey}`;
 
-    await prisma.picture.create({
+    const newPicture = await prisma.picture.create({
       data: {
         url: imageUrl,
         userId: userId,
         category: category,
+        season: season,
       },
     });
 
-    return NextResponse.json(
-      {
-        message: "Image uploaded successfully",
-        url: imageUrl,
-      },
-      { status: 201 }
-    );
+    return NextResponse.json(newPicture, { status: 201 });
   } catch (error) {
     console.error("Error uploading image:", error);
     return NextResponse.json(
