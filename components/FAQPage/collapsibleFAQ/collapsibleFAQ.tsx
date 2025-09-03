@@ -13,7 +13,7 @@ export default function CollapsibleFAQ({
   toggleFAQ,
 }: CollapsibleFAQProps) {
   return (
-    <div className="bg-white rounded shadow overflow-hidden">
+    <div className="bg-white dark:text-black rounded shadow overflow-hidden">
       <button
         onClick={() => toggleFAQ(faq.id)}
         className="w-full flex justify-between items-center p-4 font-medium text-left text-lg sm:text-xl lg:text-2xl hover:bg-gray-50"
@@ -28,7 +28,7 @@ export default function CollapsibleFAQ({
         </div>
       </button>
       {isOpen && (
-        <div className="p-4 text-tw-grey sm:text-lg lg:text-xl">
+        <div className="p-4 text-tw-grey dark:text-black sm:text-lg lg:text-xl">
           {faq.answer}
         </div>
       )}
