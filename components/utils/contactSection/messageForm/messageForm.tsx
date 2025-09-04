@@ -1,6 +1,12 @@
+"use client";
+
 import SubmitButton from "@/components/utils/Button";
 
 export default function MessageForm() {
+  const handleClick = () => {
+    alert("Feature coming soon");
+  };
+
   return (
     <section className="flex flex-col items-center justify-center bg-background text-foreground w-full lg:w-1/2 max-w-[1024px] gap-4">
       <h4 className="font-bold lg:text-xl">Send Message</h4>
@@ -47,7 +53,7 @@ export default function MessageForm() {
         <p className="text-center text-tw-dark-red text-lg">
           Attachments Coming Soon
         </p>
-        <SubmitButton type="submit" name="SEND" />
+        <SubmitButton type="button" name="SEND" onClick={handleClick} />
       </form>
     </section>
   );

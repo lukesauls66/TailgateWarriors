@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
 import SubmitButton from "../utils/Button";
@@ -12,12 +12,8 @@ export default function AdminLoginPage() {
   const router = useRouter();
   const { user, login } = useAuth();
 
-  const hasAlerted = useRef(false);
-
   useEffect(() => {
-    if (user && !hasAlerted.current) {
-      hasAlerted.current = true;
-      alert("You're already signed in.");
+    if (user) {
       router.push("/");
     }
   }, [user, router]);
