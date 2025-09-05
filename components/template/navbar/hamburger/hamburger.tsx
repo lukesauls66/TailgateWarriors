@@ -16,7 +16,7 @@ export default function Hamburger() {
       <button
         onClick={toggleSidebar}
         aria-label="Toggle sidebar"
-        className="flex flex-col justify-center items-center w-8 h-8 lg:w-[2.5rem] lg:h-[2.5rem] xl:w-[3rem] xl:h-[3rem] space-y-1 z-50"
+        className="flex flex-col justify-center items-center w-8 h-8 lg:w-[2.5rem] lg:h-[2.5rem] xl:w-[3rem] xl:h-[3rem] space-y-1 z-50 cursor-pointer"
       >
         <RxHamburgerMenu className="w-8 h-8 lg:w-[2.5rem] lg:h-[2.5rem] xl:w-[3rem] xl:h-[3rem] " />
       </button>
