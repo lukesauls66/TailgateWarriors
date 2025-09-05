@@ -72,7 +72,7 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
             onChange={(e) => setCategoryFilter(e.target.value)}
             className="border p-2 rounded w-[8rem] md:w-[10rem]"
           >
-            <option value="All">Categories</option>
+            <option value="All">All Categories</option>
             <option value="Home">Home</option>
             <option value="Away">Away</option>
           </select>
@@ -82,7 +82,7 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
             onChange={(e) => setSeasonFilter(e.target.value)}
             className="border p-2 rounded w-[8rem] md:w-[10rem]"
           >
-            <option value="All">Seasons</option>
+            <option value="All">All Seasons</option>
             {seasons.map((season) => (
               <option key={season} value={season}>
                 {season}
@@ -96,12 +96,12 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
         <p className="md:text-lg xl:text-xl">No photos available</p>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {photoState.map((photo) => (
+          {filteredPhotos.map((photo) => (
             <div key={photo.id} className="relative group">
               <img
                 src={photo.url}
                 alt={photo.category}
-                className="w-full h-[20rem] md:[30rem] rounded-lg"
+                className="w-full h-[15rem] md:h-[25rem] rounded-lg"
               />
               {user && (
                 <button
