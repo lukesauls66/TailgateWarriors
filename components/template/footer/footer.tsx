@@ -8,7 +8,14 @@ export default function Footer() {
         Copyright © 2025 Tailgate Warriors - All Rights Reserved.
       </p>
       <Link href="/privacy-policy">PRIVACY POLICY</Link>
-      <AiFillTikTok className="text-[40px] 2xl:text-[50px]" />
+      <a
+        href="https://www.tiktok.com/@tailgatewarriors"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cursor-pointer"
+      >
+        <AiFillTikTok className="text-[40px] 2xl:text-[50px]" />
+      </a>
     </footer>
   );
 }
