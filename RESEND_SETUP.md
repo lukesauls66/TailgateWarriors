@@ -14,6 +14,7 @@ This project uses [Resend](https://resend.com) for handling contact form email s
 ### 2. Configure Environment Variables
 
 1. Copy `.env.local.example` to `.env.local`:
+
    ```bash
    cp .env.local.example .env.local
    ```
@@ -38,27 +39,71 @@ For production use, you'll need to verify your domain with Resend:
 ### 4. Testing
 
 For development/testing, you can use:
+
 - Any valid email address for `TO_EMAIL`
 - The default `FROM_EMAIL` will work with Resend's sandbox
 
 ### Environment Variables Reference
 
+**Resend (Required):**
+
 - `RESEND_API_KEY`: Your Resend API key (required)
 - `TO_EMAIL`: Email address that receives contact form submissions (required)
 - `FROM_EMAIL`: Email address used as the sender (optional, defaults to noreply@yourdomain.com)
+
+**AWS S3 for Attachments (Required for file uploads):**
+
+- `AWS_ACCESS_KEY_ID`: Your AWS access key ID
+- `AWS_SECRET_ACCESS_KEY`: Your AWS secret access key
+- `AWS_REGION`: AWS region for your S3 bucket (e.g., us-east-1)
+- `AWS_S3_BUCKET_NAME`: Name of your S3 bucket for storing attachments
+
+### AWS S3 Setup (For File Attachments)
+
+1. **Create S3 Bucket:**
+
+   - Go to [AWS S3 Console](https://console.aws.amazon.com/s3/)
+   - Create a new bucket with public read access
+   - Note the bucket name and region
+
+2. **Create IAM User:**
+
+   - Go to [AWS IAM Console](https://console.aws.amazon.com/iam/)
+   - Create a new user with programmatic access
+   - Attach policy with S3 permissions (PutObject, DeleteObject, GetObject)
+   - Save the Access Key ID and Secret Access Key
+
+3. **Bucket Policy Example:**
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Sid": "PublicReadGetObject",
+         "Effect": "Allow",
+         "Principal": "*",
+         "Action": "s3:GetObject",
+         "Resource": "arn:aws:s3:::your-bucket-name/*"
+       }
+     ]
+   }
+   ```
 
 ## Features
 
 - ✅ Form validation (client and server-side)
 - ✅ Email sending via Resend API
+- ✅ File attachments with S3 storage
+- ✅ Attachment preview in emails
+- ✅ File type and size validation
 - ✅ Loading states and user feedback
 - ✅ Error handling
 - ✅ Responsive design
-- ⏳ File attachments (coming soon)
 
 ## API Endpoint
 
 The contact form submits to `/api/contact` which:
+
 - Validates form data
 - Sends email via Resend
 - Returns success/error responses
