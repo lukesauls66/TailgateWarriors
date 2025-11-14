@@ -6,4 +6,4 @@ async function hashPassword(plainTextPassword) {
   console.log(hash);
 }
 
-hashPassword("samplePassword");
+hashPassword("samplePassword123");
