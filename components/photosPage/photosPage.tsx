@@ -26,8 +26,8 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
 
   const PHOTOS_PER_PAGE = 20;
 
-  const handleAddPhoto = (newPhoto: Photo) => {
-    setPhotoState((prev) => [newPhoto, ...prev]);
+  const handleAddPhotos = (newPhotos: Photo[]) => {
+    setPhotoState((prev) => [...newPhotos, ...prev]);
   };
 
   const arePhotos = photoState && photoState.length > 0;
@@ -44,7 +44,6 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
   const endIndex = startIndex + PHOTOS_PER_PAGE;
   const currentPhotos = filteredPhotos.slice(startIndex, endIndex);
 
-  // Reset page when filters change
   const handleFilterChange = (
     filterType: "category" | "season",
     value: string
@@ -71,6 +70,10 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
     "Season2015",
   ];
 
+  const formatSeasonDisplay = (season: string) => {
+    return season.replace("Season", "") + " Season";
+  };
+
   return (
     <main className="flex flex-col items-center min-h-screen p-4 md:p-8 lg:p-12 gap-4 md:gap-8 lg:gap-12">
       <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center">
@@ -80,8 +83,8 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
         <div>
           <Button
             onClick={() => setIsCreateOpen(true)}
-            name="Add Photo"
-            width="w-[6rem] md:w-[8rem]"
+            name="Add Photos"
+            width="w-[7rem] md:w-[9rem]"
           />
         </div>
       )}
@@ -106,7 +109,7 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
             <option value="All">All Seasons</option>
             {seasons.map((season) => (
               <option key={season} value={season}>
-                {season}
+                {formatSeasonDisplay(season)}
               </option>
             ))}
           </select>
@@ -217,7 +220,7 @@ export default function PhotosPage({ photos }: PhotosPageProps) {
       <PhotoModal
         isOpen={isCreateOpen}
         onClose={() => setIsCreateOpen(false)}
-        onAddPhoto={handleAddPhoto}
+        onAddPhoto={handleAddPhotos}
         user={user}
       />
     </main>
