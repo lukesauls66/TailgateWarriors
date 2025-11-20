@@ -48,21 +48,84 @@ export default function UserCard({ user }: UserCardProps) {
               try {
                 if (!user.birthday) return "No Date";
 
+                console.log(
+                  "Raw birthday value:",
+                  user.birthday,
+                  "Type:",
+                  typeof user.birthday
+                );
+
+                // Convert to string if it's not already
+                const birthdayStr = String(user.birthday).trim();
+
                 // Handle existing MM/DD or MM/D format from database
-                const parts = user.birthday.split("/");
+                const parts = birthdayStr.split("/");
+                console.log("Split parts:", parts);
+                console.log(
+                  "Month part:",
+                  `"${parts[0]}"`,
+                  "Length:",
+                  parts[0].length,
+                  "Char codes:",
+                  [...parts[0]].map((c) => c.charCodeAt(0))
+                );
+                console.log(
+                  "Day part:",
+                  `"${parts[1]}"`,
+                  "Length:",
+                  parts[1].length,
+                  "Char codes:",
+                  [...parts[1]].map((c) => c.charCodeAt(0))
+                );
+
                 if (parts.length !== 2) {
-                  console.error("Invalid birthday format:", user.birthday);
+                  console.error("Invalid birthday format:", birthdayStr);
                   return "Invalid Format";
                 }
 
-                const month = parts[0].padStart(2, "0");
-                const day = parts[1].padStart(2, "0");
+                // Clean the parts more aggressively - remove any non-digit characters
+                const monthStr = parts[0].replace(/\D/g, "");
+                const dayStr = parts[1].replace(/\D/g, "");
 
-                // Validate month and day are numbers
-                if (isNaN(Number(month)) || isNaN(Number(day))) {
-                  console.error("Invalid birthday values:", user.birthday);
+                console.log(
+                  "Cleaned - Month:",
+                  `"${monthStr}"`,
+                  "Day:",
+                  `"${dayStr}"`
+                );
+
+                const monthNum = parseInt(monthStr, 10);
+                const dayNum = parseInt(dayStr, 10);
+
+                console.log(
+                  "Parsed numbers - Month:",
+                  monthNum,
+                  "Day:",
+                  dayNum
+                );
+
+                // Validate month and day are valid numbers
+                if (
+                  isNaN(monthNum) ||
+                  isNaN(dayNum) ||
+                  monthNum < 1 ||
+                  monthNum > 12 ||
+                  dayNum < 1 ||
+                  dayNum > 31
+                ) {
+                  console.error(
+                    "Invalid birthday values:",
+                    birthdayStr,
+                    "Month:",
+                    monthNum,
+                    "Day:",
+                    dayNum
+                  );
                   return "Invalid Date";
                 }
+
+                const month = monthNum.toString().padStart(2, "0");
+                const day = dayNum.toString().padStart(2, "0");
 
                 return `${month}/${day}`;
               } catch (error) {
