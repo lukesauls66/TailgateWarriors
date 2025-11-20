@@ -45,10 +45,30 @@ export default function UserCard({ user }: UserCardProps) {
           <p className="text-sm md:text-md lg:text-lg text-black">
             🎂{" "}
             {(() => {
-              const date = new Date(user.birthday);
-              const month = (date.getMonth() + 1).toString().padStart(2, '0');
-              const day = date.getDate().toString().padStart(2, '0');
-              return `${month}/${day}`;
+              try {
+                if (!user.birthday) return "No Date";
+
+                // Handle existing MM/DD or MM/D format from database
+                const parts = user.birthday.split("/");
+                if (parts.length !== 2) {
+                  console.error("Invalid birthday format:", user.birthday);
+                  return "Invalid Format";
+                }
+
+                const month = parts[0].padStart(2, "0");
+                const day = parts[1].padStart(2, "0");
+
+                // Validate month and day are numbers
+                if (isNaN(Number(month)) || isNaN(Number(day))) {
+                  console.error("Invalid birthday values:", user.birthday);
+                  return "Invalid Date";
+                }
+
+                return `${month}/${day}`;
+              } catch (error) {
+                console.error("Error parsing birthday:", user.birthday, error);
+                return "Date Error";
+              }
             })()}
           </p>
         )}
