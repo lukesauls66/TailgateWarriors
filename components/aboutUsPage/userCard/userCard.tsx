@@ -43,7 +43,13 @@ export default function UserCard({ user }: UserCardProps) {
         )}
         {user.birthday && (
           <p className="text-sm md:text-md lg:text-lg text-black">
-            🎂 {new Date(user.birthday).toLocaleDateString()}
+            🎂{" "}
+            {(() => {
+              const date = new Date(user.birthday);
+              const month = (date.getMonth() + 1).toString().padStart(2, '0');
+              const day = date.getDate().toString().padStart(2, '0');
+              return `${month}/${day}`;
+            })()}
           </p>
         )}
       </div>
